@@ -1,0 +1,40 @@
+#include "stdafx.h"
+#include <iostream>
+#include <string>
+#include <cstdint>
+#include <cmath>
+
+
+using namespace std;
+
+class Point2d
+{
+private:
+	double m_x;
+	double m_y;
+public:
+	Point2d(double x = 0.0, double y = 0.0) : m_x(x), m_y(y) {}
+
+	void print()
+	{
+		cout << "x coordinate: " << m_x << " y coordinate: " << m_y << endl;
+	}
+
+	friend double distanceFrom(Point2d point1, Point2d point2);
+
+};
+
+double distanceFrom(Point2d point1, Point2d point2)
+{
+	return sqrt((point1.m_x - point2.m_x)*(point1.m_x - point2.m_x) + (point1.m_y - point2.m_y)*(point1.m_y - point2.m_y));
+}
+
+int main()
+{
+	Point2d first;
+	Point2d second(7.0, 15.0);
+	first.print();
+	second.print();
+	std::cout << "Distance between two points: " << distanceFrom(first, second) << '\n';
+	return 0;
+}
